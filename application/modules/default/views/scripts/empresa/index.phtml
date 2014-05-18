@@ -1,0 +1,39 @@
+<script type="text/javascript">
+function slider_top() {
+    $(".slider-bg").backstretch([
+         baseUrl+"/default/uploads/banners/background/big-1.jpg", 
+         baseUrl+"/default/uploads/banners/background/big-2.jpg", 
+         baseUrl+"/default/uploads/banners/background/big-3.jpg", 
+         baseUrl+"/default/uploads/banners/background/big-4.jpg"
+    ], {
+        duration: 10000,
+        fade: 750
+    });
+}
+</script>
+<section class="container">
+
+	<p align="justify">
+        A Electric Ink foi fundada em 2006 por tatuadores com o intuito de atender e, principalmente, entender todas as necessidades destes profissionais e artistas, desde então, trabalha constantemente no desenvolvimento e fabricação de tintas (com suporte de nossos próprios laboratórios de desenvolvimento e controle de qualidade), máquinas e acessórios para tatuagem e maquiagem definitiva.
+		<br /><br />
+        Temos como filosofia sempre a superação, nos aprimorando, não somente tecnologicamente, como também no que diz respeito à qualificação de pessoal. Nossa preocupação não é somente se limitar à perfeição no resultado da tatuagem, mas também em preservar a saúde e o bem estar de nossos clientes. E pensando nisso, a Electric Ink é a primeira empresa 100% brasileira a ter seus produtos registrados nos órgãos de saúde responsáveis, sinal de compromisso não somente com a arte, mas com a saúde e a segurança das pessoas.
+		<br /><br />
+        Quando for fazer uma tatuagem, exija a melhor, exija a mais segura, exija Electric Ink.
+		
+	</p>
+	
+	<div class="row">
+    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        	<div class="content-panel">
+            	<div class="photoset-grid-lightbox" data-layout="3232323233" style="visibility: hidden;">
+               		<?php foreach($this->Data as $v){ ?>
+               			<img src="<?php echo $this->baseUrl() ?>/default/uploads/empresa/<?php echo $v->imagem; ?>" data-highres="<?php echo $this->baseUrl() ?>/default/uploads/empresa/<?php echo $v->imagem; ?>" alt="" />
+                    <?php }  ?>           
+                </div>
+            </div>
+         </div>
+    </div>
+
+</section>
+
+

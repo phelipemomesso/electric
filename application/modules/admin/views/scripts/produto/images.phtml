@@ -1,0 +1,28 @@
+<a class="btn btn-sm btn-success" href="<?= $this->BaseUrl() ?>/admin/produto/imagesnew/galeria/<?php echo $this->Galeria;?>">
+    <i class="fa fa-plus-circle fa-lg"></i> Novas Imagens
+</a>
+
+<br /><br />
+
+<div class="table-header"><i class="fa fa-th-large"></i> Imagens do Produto / <?php echo $this->Produto->nome; ?></div>
+
+<br /><br />
+
+<div class="row">
+    <?php foreach ($this->Data as $rs) { ?>
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail" style="height:150px; text-align:center">
+            <img src="<?php echo $this->BaseUrl() ?>/default/uploads/produtos/<?php echo $rs->produto; ?>/<?php echo $rs->imagem; ?>" style="margin-bottom: 5px;" height="120" width="120" class="img-rounded" />
+            <div class="caption">
+                <p>
+                    <a class="btn btn-xs btn-danger btn-tooltip" data-toggle="tooltip" data-original-title="Excluir" href="<?= $this->BaseUrl() ?>/admin/produto/deleteimage/id/<?php echo $rs->cod_imagem; ?>" >
+                    <i class="fa fa-trash-o fa-lg"></i> 
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
+</div>
+
+<style>.gallery-img { height: 315px; text-align:center }</style>

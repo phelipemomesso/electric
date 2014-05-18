@@ -1,0 +1,33 @@
+<a class="btn btn-sm btn-success" href="<?= $this->BaseUrl() ?>/admin/galeria/new">
+    <i class="fa fa-plus-circle fa-lg"></i> Novas Imagens
+</a>
+
+<br /><br />
+
+<div class="table-header"><i class="fa fa-th-large"></i> Imagens da Empresa</div>
+
+<br /><br />
+
+<div class="row">
+    <?php foreach ($this->Data as $rs) { ?>
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail gallery-img">
+            <img src="<?php echo $this->BaseUrl() ?>/default/uploads/empresa/<?php echo $rs->imagem; ?>" style="margin-bottom: 5px;" class="img-rounded img-responsive" />
+            <div class="caption">
+                <p>
+                    
+                    <strong>Posição: <?php echo $rs->position; ?></strong>
+                    <br />
+                    <a class="btn btn-xs btn-info btn-tooltip" data-toggle="tooltip" data-original-title="Editar" href="<?php echo $this->BaseUrl() ?>/admin/galeria/edit/id/<?php echo $rs->cod_imagem ?>">
+                        <i class="fa fa-pencil-square-o fa-lg"></i>  
+                    </a>
+                    <a class="btn btn-xs btn-danger btn-tooltip" data-toggle="tooltip" data-original-title="Excluir" href="<?= $this->BaseUrl() ?>/admin/galeria/delete/id/<?php echo $rs->cod_imagem; ?>" >
+                        <i class="fa fa-trash-o fa-lg"></i> 
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
+</div>
+<style>.gallery-img { height: 250px; text-align:center }</style> 

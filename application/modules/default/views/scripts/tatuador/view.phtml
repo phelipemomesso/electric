@@ -1,0 +1,45 @@
+<script type="text/javascript">
+function slider_top() {
+    $(".slider-bg").backstretch([
+         baseUrl+"/default/uploads/banners/background/big-1.jpg", 
+         baseUrl+"/default/uploads/banners/background/big-2.jpg", 
+         baseUrl+"/default/uploads/banners/background/big-3.jpg", 
+         baseUrl+"/default/uploads/banners/background/big-4.jpg"
+    ], {
+        duration: 10000,
+        fade: 750
+    });
+}
+</script>
+<section class="container">
+	
+	
+	<div class="col-xs-12 col-sm-6 col-md-5" align="center">
+		<img src="<?php echo $this->baseUrl() ?>/default/uploads/tatuadores/<?php echo $this->Data->cod_tatuador; ?>/tatuador.jpg" alt="img-responsive" />
+		<h2><?php echo $this->Data->nome; ?></h2>
+		<?php echo nl2br($this->Data->sobre); ?>
+
+		<?php if (!empty($this->Data->facebook)) { ?>
+			<br /><br />
+			<a href="<?php echo $this->Data->facebook; ?>" target="_blank">
+				<div class="social-facebook"></div>
+			</a>
+		<?php } ?>
+
+	</div>
+	
+	<div class="col-xs-12 col-sm-6 col-md-7">
+	
+	<div class="photoset-grid-lightbox" data-layout="23444" style="visibility: hidden;">
+
+		<?php foreach ($this->Images as $v) { ?>
+		
+	    	<img src="<?php echo $this->baseUrl() ?>/default/uploads/tatuadores/<?php echo $v->tatuador.'/galeria/'.$v->imagem; ?>" data-highres="<?php echo $this->baseUrl() ?>/default/uploads/tatuadores/<?php echo $v->tatuador.'/galeria/'.$v->imagem; ?>" alt="" />
+	                
+	   	<?php }  ?>  
+
+   	</div>	
+
+   </div>
+	
+</section>	

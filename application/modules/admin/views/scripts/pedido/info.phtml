@@ -1,0 +1,94 @@
+<div class="table-responsive">
+
+  <h3>Dados do Pedido</h3>
+  
+  <table class="table table-striped table-hover">
+          
+    <tr align="center">
+      <th>Número Pedido</th>
+      <th>Data</th>
+      <th>Forma de Pagamento</th>
+      <th>Valor do Pedido</th>
+      <th>Status</th>
+    </tr>
+
+    <tr>
+      
+      <td><?php echo $this->Pedido->pedido_numero ;?></td>
+            <td><?php echo $this->Data($this->Pedido->created_at) ;?></td>
+            <td><?php echo $this->Pedido->pagamento ;?></td>
+            <td><?php echo $this->Valor($this->Pedido->valor) ;?></td>
+            <td>
+            <?php  
+              
+              switch ($this->Pedido->status) {
+                
+                case 1:
+                echo 'Pedido realizado';
+                break;
+
+                case 2:
+                echo 'Autorização de pagamento';
+                break;
+
+                case 3:
+                 echo 'Preparação para o envio';
+                break; 
+
+                case 4:
+                 echo 'Transporte do(s) Produto(s)';
+                break;
+
+                case 5:
+                 echo 'Entrega do(s) Produto(s)';
+                break;  
+
+              }
+            ?>  
+            </td>
+          </tr>
+      
+      </table>
+
+      <h3>Itens Comprados</h3>
+      <table class="table table-striped table-hover">
+          <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Valor Unitário</th>
+            <th>Total</th>
+          </tr>
+
+          <? foreach ($this->Produtos as $v) { ?>
+          <tr>
+              <td><?php echo $v->produto ;?></td>
+              <td><?php echo $v->quantidade ;?></td>
+              <td><?php echo $this->Valor($v->valor); ?></td>
+              <td><?php echo $this->Valor($v->valor*$v->quantidade); ?></td>
+              <td></td>
+          </tr>
+
+          <?php } ?>
+      
+      </table>
+
+
+      <h3>Dados do Cliente</h3>
+      Nome: <?php echo $this->Cliente->fantasia; ?><br />
+      Documento: <?php echo $this->Cliente->documento; ?><br />
+      Grupo: <?php  if ($this->Cliente->grupo==1) echo 'Varejo'; if ($this->Cliente->grupo==2) echo 'Atacado'; if ($this->Cliente->grupo==3) echo 'Distribuidor'; ?><br />
+      E-mail: <?php echo $this->Cliente->email; ?><br />
+      Telefone Fixo: <?php echo $this->Cliente->telefone_fixo; ?><br />
+      Telefone Celular: <?php echo $this->Cliente->telefone_celular; ?>
+      
+      <br /><br />
+      
+      <h3>Endereço do Cliente</h3>
+      Endereço: <?php echo $this->Cliente->endereco.'-'.$this->Cliente->numero; ?><br />
+      Complemento: <?php echo $this->Cliente->complemento; ?><br />
+      Bairro: <?php echo $this->Cliente->bairro; ?><br />
+      Cidade / Estado: <?php echo $this->Cliente->cidade.' / '.$this->Cliente->estado; ?><br />
+      CEP: <?php echo $this->Cliente->cep; ?>
+
+      
+  </div>

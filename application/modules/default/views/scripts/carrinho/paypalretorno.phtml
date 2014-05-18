@@ -1,0 +1,45 @@
+<script type="text/javascript">
+function slider_top() {
+    $(".slider-bg").backstretch([
+         baseUrl+"/default/uploads/banners/background/carrinho.jpg"
+    ], {
+        duration: 10000,
+        fade: 750
+    });
+}
+</script>
+<section class="container">
+
+	<h2> Finalização Pedido - Paypal</h2>
+
+	<?php if ($this->Retorno == 1) { ?>
+
+		<div class="alert alert-success">
+			
+			Obrigado por efetuar suas compras conosco.Seu pedido foi enviado para nossa empresa.<br />
+
+			Uma cópia de sua compra foi enviada para você. <br /> <br />
+
+			Assim que confirmamos seu pagamento seu produto será enviado.
+		</div>
+
+	<? } elseif (this->Retorno == 2) { ?>
+
+		<div class="alert alert-danger">
+			
+			Obrigado por efetuar suas compras conosco.Seu pedido foi enviado para nossa empresa.<br />
+
+			Uma cópia de sua compra foi enviada para você. <br /> <br />
+
+			<strong>Paypal nos informou o cancelamento do seu pagamento.</strong><br /> <br /> 
+
+			Para pagar de outra maneira entre em contato:<br /> <br /> 
+
+			E-mail: contato@electricink.com.br<br /> 
+			Telefone: +55 (34) 3312-8788<br /> 
+
+		</div>
+
+	<?php } ?>
+
+</section>

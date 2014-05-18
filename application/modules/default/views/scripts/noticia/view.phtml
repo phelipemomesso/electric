@@ -1,0 +1,16 @@
+<script type="text/javascript">
+function slider_top() {
+    $(".slider-bg").backstretch([
+         baseUrl+"/default/uploads/banners/background/sala-de-imprensa.jpg", 
+    ], {
+        duration: 10000,
+        fade: 750
+    });
+}
+</script>
+<section class="container">
+	
+	<h3><?php echo $this->Noticia->titulo; ?></h3>
+	<?php echo nl2br($this->Noticia->texto); ?>
+	
+</section>	

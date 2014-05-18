@@ -1,0 +1,16 @@
+<?php foreach ($this->Data as $v) { ?>
+	
+	<div class="col-sm-6 col-md-2 tatuadores">
+    	<a href="<?php echo $this->baseUrl() ?>/produto/view/<?php echo $this->RemoveAcentos($v->nome).'-'.base64_encode($v->cod_produto); ?>" class="thumbnail">
+        	<img src="<?php echo $this->baseUrl() ?>/default/uploads/produtos/1.jpg" alt="" />
+        	<br />
+        	<p><?php echo $v->nome; ?></p>
+        </a>
+   	</div>
+    
+    <?php } ?>
+	
+	
+	
+		
+ 

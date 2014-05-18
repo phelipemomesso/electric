@@ -1,0 +1,217 @@
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="fa fa-align-justify"></i>
+      </button>
+      <a class="navbar-brand" href="<?php echo $this->baseUrl() ?>/index">
+
+       <img src="<?php echo $this->baseUrl() ?>/default/images/electricink-logo.png" class="visible-md visible-lg"  width="150">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+        <li><a href="<?php echo $this->baseUrl() ?>/index"><i class="fa fa-home"></i></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <?php echo $this->translate("A Electric Ink"); ?> <b class="caret"></b>
+          </a>
+          
+          <ul class="dropdown-menu">
+            <li>
+              <a href="<?php echo $this->baseUrl() ?>/a-electric-ink">
+                <?php echo $this->translate("A Electric Ink"); ?>
+              </a>
+            </li>
+            <li>
+              <a href="<?php echo $this->baseUrl() ?>/representante">
+                <?php echo $this->translate("Representantes"); ?>
+              </a>
+            </li>
+            <li>
+                <a href="<?php echo $this->baseUrl() ?>/tatuador">
+                  <?php echo $this->translate("Tatuadores"); ?>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo $this->baseUrl() ?>/noticia">
+                  <?php echo $this->translate("Sala de Imprensa"); ?>
+                </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <?php echo $this->translate("Produtos"); ?> <b class="caret"></b>
+          </a>
+                
+          <ul class="dropdown-menu">
+            
+            <?php foreach ($this->Categoria() as $categoria) { ?>
+              <li>
+                <a href="<?php echo $this->baseUrl() ?>/produto/category/<?php echo $this->RemoveAcentos($categoria->nome).'/'.base64_encode($categoria->cod_categoria); ?>">
+                  <?php echo $categoria->nome; ?>
+                </a>
+              </li>
+            <?php } ?>
+          </ul>
+
+        </li>
+
+        <li class="dropdown">
+          
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <?php echo $this->translate("Cadastre-se"); ?> <b class="caret"></b>
+          </a>
+          
+          <ul class="dropdown-menu">
+            
+            <li>
+              <a href="<?php echo $this->baseUrl() ?>/cadastro/fisica">
+                <?php echo $this->translate("Pessoa Física"); ?>
+              </a>
+            </li>
+            
+            <li>
+              <a href="<?php echo $this->baseUrl() ?>/cadastro/juridica">
+                <?php echo $this->translate("Pessoa Jurídica"); ?>
+              </a>
+            </li>
+          </ul>
+
+        </li>
+
+        <li>
+          <a href="<?php echo $this->baseUrl() ?>/login"><?php echo $this->translate("Login"); ?></a>
+        </li>
+        
+        <li>
+          <a href="<?php echo $this->baseUrl() ?>/carrinho"><?php echo $this->translate("Carrinho"); ?></a>
+        </li>
+
+        <li>
+          <a href="<?php echo $this->baseUrl() ?>/contato"><i class="fa fa-envelope"></i>
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/ElectricinkBrasil" target="_blank">
+            <i class="fa fa-facebook-square"></i>
+          </a>
+        </li>
+        <li>
+          <a href="http://www.youtube.com/user/electricinktv" target="_blank">
+            <i class="fa fa-youtube-square"></i>
+          </a>
+        </li>
+
+        <?php
+                
+          $sessionCustomer = new Zend_Session_Namespace('sessionCustomer');
+          
+          if ($sessionCustomer->id) { 
+
+            $array = explode(' ', $sessionCustomer->nome); 
+
+        ?>
+
+            <li class="dropdown">
+              
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Seja bem vindo <strong><?php echo $array[0]; ?></strong> <b class="caret"></b>
+              </a>
+                        
+              <ul class="dropdown-menu">
+                            
+                <li>
+                  <a href="<?php echo $this->baseUrl() ?>/usuario/cadastro">
+                    <i class="fa fa-user"></i>  Meu Cadastro
+                  </a>
+                </li>
+                
+                <li>
+                  <a href="<?php echo $this->baseUrl() ?>/usuario/pedido">
+                    <i class="fa fa-shopping-cart"></i> Meus Pedidos
+                  </a>
+                </li>
+                            
+                <li>
+                  <a href="<?php echo $this->baseUrl() ?>/login/logout">
+                    <i class="fa fa-power-off"></i>  Sair
+                  </a>
+                </li>
+              
+              </ul>
+
+            </li>
+
+        <? } ?>
+      
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+
+<?php if(Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'index') {?>
+  
+          <article class="top-parallax">
+            <!-- contains parallax items -->
+            <section class="large-display">
+                <div class="large-slider-bg"></div>
+            </section>
+            <section class="container visible-md visible-lg">
+                <div id="da-slider" class="da-slider">
+                    
+                    <?php foreach($this->Destaques as $v) { ?>                                      
+                    <div class="da-slide">
+                        <h2><?php echo $v->nome; ?></h2>
+                        <p><?php echo $v->texto; ?></p>
+                        <div class="da-img">
+                            
+                             <?php if(!empty($v->link)) $link = $v->link; else $link = "javascript:void(0);"; ?>
+
+                            <a href="<?php echo $link; ?>" target="_blank">
+                                
+                                <?php if(!empty($v->texto)) { ?>
+                                    <img src="<?php echo $this->baseUrl() ?>/default/uploads/destaques/<?php echo $v->imagem; ?>" alt="<?php echo $v->nome; ?>" />
+                                <?php  } ?>
+                            </a>
+                        </div>
+                    </div>
+                    <?php } ?>
+                    
+                    <nav class="da-arrows">
+                        <span class="da-arrows-prev"><i class="icon-angle-left"></i></span>
+                        <span class="da-arrows-next"><i class="icon-angle-right"></i> </span>
+                    </nav>
+                </div>
+            </section>
+            <section class="large-top"></section>
+        </article>
+  
+      <?php }else{ 
+             
+             $css = '' ;  
+
+            if(Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'carrinho' or Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'noticia')
+                $css = 'style="color:#000"';
+        ?>
+      
+        <article class="top-parallax">
+            <section class="display">
+                <div class="slider-bg"></div>
+            </section>
+            <section class="container">
+                <div class="row">
+                    <div class="title">
+                        <h1 <?php echo $css; ?>><?php echo $this->tituloPagina; ?></h1>
+                    </div>
+                </div>
+            </section>
+            <section class="top"></section>
+        </article>
+      <?php }  ?>

@@ -1,0 +1,34 @@
+<script type="text/javascript">
+function slider_top() {
+    $(".slider-bg").backstretch([
+         baseUrl+"/default/uploads/banners/background/carrinho.jpg"
+    ], {
+        duration: 10000,
+        fade: 750
+    });
+}
+</script>
+<section class="container">
+
+<h2> Finalização Pedido - Depósito Bancário</h2>
+
+<h3>Pedido número: <?php echo $this->Pedido; ?></h3>
+
+Obrigado por efetuar suas compras conosco.Seu pedido foi enviado para nossa empresa.<br />
+
+Uma cópia de sua compra foi enviada para você. <br /><br />
+ 
+<div class="alert alert-success">
+	Informações para a realização do depósito bancário<br /><br />  
+
+	Banco Itaú<br />
+	Agencia: 6387<br />
+	Conta Corrente:	01200-5<br />
+	Favorecido:	Electric Ink ind. com. import. export. LTDA<br /><br />
+	Valor a depositar:	<b><?php echo $this->Valor($this->Total); ?></b><br /><br />
+
+	Envie o comprovante de pagamento para o email: <b>contato@electricink.com.br</b> com o número do seu pedido.
+</div>
+
+
+</section>

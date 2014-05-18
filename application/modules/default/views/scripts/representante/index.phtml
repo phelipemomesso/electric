@@ -1,0 +1,55 @@
+<script type="text/javascript">
+function slider_top() {
+    $(".slider-bg").backstretch([
+         baseUrl+"/default/uploads/banners/background/representantes.jpg",
+    ], {
+        duration: 10000,
+        fade: 750
+    });
+}
+</script>
+
+
+
+<section class="container">
+
+	<div id="mapa-repre" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+  </div>
+
+  <div class="clearfix"></div>
+
+  <br />
+
+  <div class="panel-group" id="accordion">
+  	
+    <?php foreach($this->Data as $v){ ?>
+  	
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#repre<?php echo $v->cod_representante; ?>">
+              <?php echo $v->nome; ?> <span class="badge"><?php echo $v->cidade.'/'.$v->estado ; ?></span>
+            </a>
+          </h4>
+        </div>
+        
+        <div id="repre<?php echo $v->cod_representante; ?>" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <?php 
+              echo nl2br($v->texto); 
+
+              if (!empty($v->imagem))
+                echo  '<img src="'.$this->baseUrl().'/default/uploads/representantes/'.$v->imagem.'" class="img-responsive" alt="" />';
+            ?>
+          </div>
+        </div>
+
+      </div>
+      
+    <?php } ?>
+
+  </div>
+
+</section>

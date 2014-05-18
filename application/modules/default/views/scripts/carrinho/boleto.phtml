@@ -1,0 +1,26 @@
+<script type="text/javascript">
+function slider_top() {
+    $(".slider-bg").backstretch([
+         baseUrl+"/default/uploads/banners/background/carrinho.jpg"
+    ], {
+        duration: 10000,
+        fade: 750
+    });
+}
+</script>
+<section class="container">
+
+<h2> Finalização Pedido - Boleto Bancário</h2>
+
+<h3>Pedido número: <?php echo $this->Pedido; ?></h3>
+
+<div class="alert alert-success">
+	
+	Obrigado por efetuar suas compras conosco.Seu pedido foi enviado para nossa empresa.<br />
+
+	Uma cópia de sua compra foi enviada para você. <br /><br />  
+
+	Imprimir Boleto - <a href="<?php echo $this->baseUrl() ?>/carrinho/imprimeboleto/boleto/<?php echo $this->Boleto; ?>" target="_blank" class="alert-link">Clique Aqui</a>
+</div>
+
+</section>

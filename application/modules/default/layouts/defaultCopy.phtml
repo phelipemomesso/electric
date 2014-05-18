@@ -1,0 +1,134 @@
+<?php echo $this->doctype() ?>
+<html lang="pt-br">
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Content-Language" content="pt-BR" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <meta name="author" content="Momesso Web Studio - www.momessoweb.com.br - (34) 3316-8682" />
+        <meta name="company" content="Momesso Web Studio - www.momessoweb.com.br - (34) 3316-8682" />
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="" />
+		<meta name="keywords" content="" />
+        
+        <meta name="robots" content="index,follow" />
+		<meta name="rating" content="general" />
+		<meta name="revisit-after" content="1" />
+		<meta name="url" content="www.electricink.com.br" />
+		
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="expires" content = "0" /> 
+        
+        <? echo $this->headTitle(); ?>
+        
+        <!-- Styles -->
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl() ?>/default/css/flexslider.css" />
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl() ?>/default/css/styles.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl() ?>/default/css/parallaxslider.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl() ?>/default/css/colorbox.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl() ?>/default/css/lightbox.css" />
+        
+        <link href="<?php echo $this->baseUrl() ?>/default/img/favicon.ico" rel="icon" />
+        
+        <?php
+	        echo $this->headLink();
+	        echo $this->headScript();
+	        echo $this->inlineScript();
+	        
+	        echo $this->headScript()->setScript('
+				var baseUrl = "' . $this->BaseUrl() . '";
+				var module = "' . Zend_Controller_Front::getInstance()->getRequest()->getModuleName() . '";
+				var controller = "' . Zend_Controller_Front::getInstance()->getRequest()->getControllerName() . '";
+				var action = "' . Zend_Controller_Front::getInstance()->getRequest()->getActionName() . '";
+			');
+        ?>       
+        
+    </head>
+    <body>
+		<div id="wrap">
+		
+			<?php echo $this->render('nav.phtml'); ?>
+
+	 		<article class="<?php if(Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'index')  echo "large-doc"; else echo "doc"; ?>">
+            
+            <?php if (count($this->messages)) : ?>
+                <div class="alert alert-info container">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <ul class="list-unstyled">
+                        <?php foreach ($this->messages as $message) : ?>
+                            <li><?php echo $this->escape($message); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
+
+            <?php echo $this->layout()->content; ?>
+
+            <?php if(Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'index') { ?>
+                <br /><br />
+                <section id="testimonials" style="padding-top:25px;">
+                    <div id="testimonials-background" data-stellar-background-ratio="0.5">
+                        
+                    </div>
+                </section>
+             <?php } ?>
+   
+			<?php echo $this->partial('footer.phtml'); ?>
+			
+			</article>
+			
+		</div>
+	    
+		
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/r29/html5.min.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+          <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <![endif]-->
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+        <script type="text/javascript" src="<?php echo $this->baseUrl() ?>/default/js/modernizr.custom.js"></script>
+        
+        <script type="text/javascript" src="<?php echo $this->baseUrl() ?>/default/js/jquery.flexslider-min.js"></script>
+        <script type="text/javascript" src="<?php echo $this->baseUrl() ?>/default/js/jquery.backstretch.min.js"></script>
+        <script type="text/javascript" src="<?php echo $this->baseUrl() ?>/default/js/jquery.cslider.js"></script>
+        <script type="text/javascript" src="<?php echo $this->baseUrl() ?>/default/js/jquery.colorbox.js" ></script>
+        <script type="text/javascript" src="<?php echo $this->baseUrl() ?>/default/js/jquery.photoset-grid.min.js"></script>
+        <script type="text/javascript" src="<?php echo $this->baseUrl() ?>/default/js/lightbox-2.6.min.js"></script>
+        <script type="text/javascript" src="<?php echo $this->baseUrl() ?>/default/js/teste.js"></script>
+
+        <script type="text/javascript" src="<?php echo $this->baseUrl() ?>/default/js/script.js"></script>
+
+        <script type="text/javascript" src="<?php echo $this->baseUrl() ?>/admin/assets/js/login.js"></script>
+    
+    	<?php if(Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'index') {?>
+    		<script type="text/javascript">
+                parallax(); large_navbar_change(); large_slider_top(); parallax_slider(); clients(); portfolio_effects();
+            </script>
+    	<?php }else{ ?>
+    	
+    		<script type="text/javascript">parallax(); navbar_change(); slider_top(); photo_grid();</script>
+            
+            <?php if(Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'representante') {?>
+                <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+                <script type="text/javascript" src="<?php echo $this->baseUrl() ?>/default/js/infobox.js"></script>
+                <script type="text/javascript" src="<?php echo $this->baseUrl() ?>/default/js/markerclusterer.js"></script>
+                <script type="text/javascript" src="<?php echo $this->baseUrl() ?>/default/js/mapa.js"></script>
+
+    	<?php } }  ?>
+    
+    </body>
+
+</html>

@@ -1,0 +1,46 @@
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script type="text/javascript" src="<?php echo $this->baseUrl() ?>/default/js/gmaps.js"></script>
+<script type="text/javascript">
+function slider_top() {
+    $(".slider-bg").backstretch([
+         baseUrl+"/default/uploads/banners/background/big-1.jpg", 
+         baseUrl+"/default/uploads/banners/background/big-2.jpg", 
+         baseUrl+"/default/uploads/banners/background/big-3.jpg", 
+         baseUrl+"/default/uploads/banners/background/big-4.jpg"
+    ], {
+        duration: 10000,
+        fade: 750
+    });
+}
+</script>
+
+<section class="container">
+
+	<section class="col-xs-12 col-sm-4 col-md-4">
+	
+		<?php echo $this->Msg; ?>
+		<?php echo $this->Form; ?>
+		<div class="clearfix"></div>	
+	</section>
+		
+	<section class="col-sm-8 col-md-8">
+			
+		<div id="map-canvas"></div>
+		
+		<div class="location hidden-xs">
+	    	<div class="address">
+	        	<h3>Contato</h3>
+	            <p>Rua Passa Quatro - nº 398</p>
+	            <p>Bairro Bom Retiro</p>
+	            <p>Uberaba/MG</p>
+	            <p>Brasil</p>
+	        </div>
+	        <p><i class="icon-phone contact-icon"></i> +55 (34) 3312-8788</p>
+	        <p><i class="icon-envelope-alt contact-icon"></i><a href="mailto:email@yourdomain.com"> contato@electricink.com.br</a></p>
+	     </div>
+		
+	</section>
+
+</section>
+	
+<div class="clearfix"></div>

@@ -1,0 +1,44 @@
+<a class="btn btn-sm btn-success" href="<?= $this->BaseUrl() ?>/admin/noticia/new">
+    <i class="fa fa-plus-circle fa-lg"></i> Nova Notícia
+</a>
+
+<br /><br />
+
+<div class="row">
+    <div class="col-xs-12"> 
+        <div class="table-header"><i class="fa fa-th-large"></i> Notícias</div>
+
+        <div class="table-responsive">
+             <table class="table table-striped table-bordered table-hover" id="registros">
+                <thead>
+                    <tr>
+                        <th>Titulo</th>
+                        <th>Publicado</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>   
+                <tbody>
+                    <?php foreach ($this->Data as $rs) { ?>
+                    <tr>
+                        <td><?php echo $rs->titulo; ?></td>
+                        <td class="center">
+                            <?php 
+                                if($rs->situacao == 1) echo '<span class="label label-success arrowed">Sim</label'; else echo '<span class="label">Não</label';
+                            ?>
+                        </td>
+                        <td class="center">
+                            <a class="btn btn-xs btn-info btn-tooltip" data-toggle="tooltip" data-original-title="Editar" href="<?php echo $this->BaseUrl() ?>/admin/noticia/edit/id/<?php echo $rs->cod_noticia ?>">
+                                <i class="fa fa-pencil-square-o fa-lg"></i>  
+                            </a>
+                            <a class="btn btn-xs btn-danger btn-tooltip" data-toggle="tooltip" data-original-title="Excluir" href="<?= $this->BaseUrl() ?>/admin/noticia/delete/id/<?php echo $rs->cod_noticia; ?>" >
+                                <i class="fa fa-trash-o fa-lg"></i> 
+                            </a>
+                        </td>
+                        
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>            
+        </div>
+    </div><!--/span-->
+</div><!--/row-->

@@ -1,0 +1,30 @@
+<script type="text/javascript">
+function slider_top() {
+    $(".slider-bg").backstretch([
+         baseUrl+"/default/uploads/banners/background/sala-de-imprensa.jpg", 
+    ], {
+        duration: 10000,
+        fade: 750
+    });
+}
+</script>
+<section class="container">
+  
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 blog">
+    	<?php foreach($this->Data as $v){ ?>
+    	<div class="content-panel">
+        	
+        	<h3><?php echo $v->titulo; ?></h3>
+			<p><?php echo $this->Truncate($v->texto,500); ?></p>
+            <p><a class="pull-right btn blue" href="<?php echo $this->baseUrl() ?>/noticia/view/<?php echo $this->RemoveAcentos($v->titulo).'-'.base64_encode($v->cod_noticia); ?>">LEIA <i class="icon-plus"></i></a></p>
+        </div>
+       <?php } ?>                 
+     </div>
+     
+     <?php echo $this->paginationControl($this->Data, 'Sliding', 'render/pagination.phtml') ?>
+    
+</section>	
+	
+	
+		
+ 

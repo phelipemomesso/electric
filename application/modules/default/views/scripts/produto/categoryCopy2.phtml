@@ -1,0 +1,98 @@
+<script type="text/javascript">
+function slider_top() {
+    $(".slider-bg").backstretch([
+         
+        <?php 
+
+        if ($this->Categoria->cod_categoria == 3) { 
+            $img = 'md.jpg';
+        
+        } elseif ($this->Categoria->cod_categoria == 4) { 
+            $img = 'maquinas.jpg'; 
+
+        } elseif ($this->Categoria->cod_categoria == 6) { 
+            $img = 'essentialcare.jpg';
+
+        } else {
+
+            $img = 'big-1.jpg';
+        }         
+        ?>
+
+         baseUrl+"/default/uploads/banners/background/<?php echo $img; ?>"
+
+    ], {
+        duration: 10000,
+        fade: 750
+    });
+}
+</script>
+<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"> 
+
+    <h3> Categorias</h3>
+    <ul class="nav nav-list categories">
+        
+        <?php foreach ($this->Categoria() as $categoria) { ?>
+            <li>
+                <?php echo $categoria->nome; ?>
+                <?php echo $this->Grupo($categoria->cod_categoria); ?>
+                
+            </li>
+        <?php } ?>    
+
+    </ul>
+
+</div>
+
+<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+    <div class="featureprojectcontianer mt40" id="productlist">
+          
+        <h3> Produtos - <?php echo $this->Categoria->nome; ?></h3>
+        
+        <div class="featureprojectwrap latestprojectcontianer grid">
+        
+            <ul>
+                  
+                <?php foreach ($this->Data as $v) { ?>
+                    
+                    <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="product-list">
+                            <div class="relativediv">
+                                
+                                <?php if (!empty($v->imagem)) {
+                                    $image = $v->cod_produto.'/'.$v->imagem;
+                                } else {
+                                    $image = 'product1a.jpg';
+                                }?>
+                                <a href="<?php echo $this->baseUrl() ?>/produto/view/<?php echo $this->RemoveAcentos($v->nome).'-'.base64_encode($v->cod_produto); ?>">
+                                    <img src="<?php echo $this->baseUrl() ?>/default/uploads/produtos/<?php echo $image; ?>" class="img-responsive" alt="" />
+                                </a>
+                            </div>
+                            
+                            <div class="caption">
+                                <h3><a href="<?php echo $this->baseUrl() ?>/produto/view/<?php echo $this->RemoveAcentos($v->nome).'-'.base64_encode($v->cod_produto); ?>"><?php echo $v->nome; ?></a></h3>
+                                <div class="productratecart">
+                                    <div class="pull-left">
+                                        <span class="newprice">
+                                            <?php echo $this->Valor($v->preco_varejo); ?>
+                                        </span>
+                                        <!-- <span class="oldprice"> $5000.00</span> -->
+                                    </div>
+                                    <br clear="all" />  
+                                    <div class=" pull-right">
+                                        <a id="<?php echo $v->cod_produto; ?>" class="btn btn-sm btn-success btn-comprar"><i class="fa fa-shopping-cart"></i> Comprar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                <?php } ?>
+            </ul>
+	   </div>
+    </div>
+</div>    
+
+<br clear="all" />	
+ 

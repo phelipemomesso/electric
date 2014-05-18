@@ -1,0 +1,8 @@
+tmp/**
+public_html/default/uploads/**
+html/**
+bkp/**
+application/.DS_Store
+.DS_Store
+.buildpath
+.project

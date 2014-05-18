@@ -1,0 +1,81 @@
+<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"> 
+
+    <h2 class="heading1"><span class="maintext"> Categorias</span></h2>
+    <ul class="nav nav-list categories">
+        
+        <?php foreach ($this->Categoria() as $categoria) { ?>
+            <li>
+                <?php echo $categoria->nome; ?>
+                <?php echo $this->Grupo($categoria->cod_categoria); ?>
+                
+            </li>
+        <?php } ?>      
+
+    </ul>
+
+</div>
+
+<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+	
+	<div class="col-xs-12 col-sm-6 col-md-4" align="center">
+
+
+		<?php 
+		if (!empty($this->Data->imagem)) {
+        	$image = $this->Data->cod_produto.'/'.$this->Data->imagem;
+        } else {
+            $image = '1.jpg';
+        }?>
+        <img src="<?php echo $this->baseUrl() ?>/default/uploads/produtos/<?php echo $image; ?>" class="img-responsive" alt="" />
+	</div>
+	
+	<div class="col-xs-12 col-sm-6 col-md-8">
+		<h3><?php echo $this->Data->nome; ?></h3>
+
+		<div class="productpageprice"> 
+			<i class="fa fa-tags"></i> 
+			<?php echo $this->Valor($this->Data->preco_varejo); ?>
+		</div>
+        <!-- <div class="productpageoldprice">Old price : $345.00</div> -->
+
+		<?php echo nl2br($this->Data->descricao); ?>
+		
+		<br /><br />
+
+		<?php if ($this->Data->grupo == 0) { ?>
+		<a id="<?php echo $this->Data->cod_produto; ?>" class="btn btn-success btn-comprar">
+			<i class="fa fa-shopping-cart"></i> Comprar
+		</a>
+		<?php } else { ?>
+		
+
+			<form role="form" name="form-grupo" id="form-grupo">
+				<div class="form-group">
+					<label for="prod-grupo">Produto</label>
+					<br />
+					<select name="prod-grupo" id="prod-grupo">
+						<?php 
+						foreach ($this->Grupo as $prod) {
+							echo '<option value="'.$prod->cod_produto.'">'.$prod->nome.'</option>';
+						}
+						?>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="qtde-grupo">Quantidade</label>
+					<br />
+					<input size="5" maxlength="4" type="text" id="qtde-grupo" value="1">
+				</div>
+				
+				<a id="btn-comprar-grupo" class="btn btn-success">
+					<i class="fa fa-shopping-cart"></i> Comprar
+				</a>
+			</form>
+		
+		<?php } ?>
+
+	</div>	
+
+</div>	
+
+<br clear="all" />	

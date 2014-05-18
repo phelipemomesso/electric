@@ -1,0 +1,136 @@
+<?php
+$sessionCustomer = new Zend_Session_Namespace('sessionCustomer');
+
+if(!$sessionCustomer->id) {
+    $btn = 'disabled="disabled"';
+    $message = 'show';
+} else {
+    $btn ='';
+    $message = 'hidden';
+}
+?>
+<script type="text/javascript">
+function slider_top() {
+    $(".slider-bg").backstretch([
+         
+        <?php 
+
+        if ($this->Categoria->cod_categoria == 3) { 
+            $img = 'md.jpg';
+        
+        } elseif ($this->Categoria->cod_categoria == 4) { 
+            $img = 'maquinas.jpg'; 
+
+        } elseif ($this->Categoria->cod_categoria == 6) { 
+            $img = 'essentialcare.jpg';
+
+        } else {
+
+            $img = 'big-1.jpg';
+        }         
+        ?>
+
+         baseUrl+"/default/uploads/banners/background/<?php echo $img; ?>"
+
+    ], {
+        duration: 10000,
+        fade: 750
+    });
+}
+</script>
+<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"> 
+
+    <h3>Categorias</h3>
+    <ul class="nav nav-list categories">
+        
+        <?php foreach ($this->Categoria() as $categoria) { ?>
+            <li>
+                <?php echo $categoria->nome; ?>
+                <?php echo $this->Grupo($categoria->cod_categoria); ?>
+                
+            </li>
+        <?php } ?>    
+
+    </ul>
+
+</div>
+
+<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+    <div class="alert alert-danger <?php echo $message; ?>">
+        Para realizar compras é necessário estar logado.
+    </div>
+
+    <h3>Produtos - <?php echo $this->Categoria->nome.' - '.$this->Grupo->nome; ?></h3>
+    
+    <div class="table-responsive">
+        <table class="table table table-striped table-hover">
+            <thead>
+                <tr>
+                <th>Produto</th>
+                <th></th>
+                <th>Estoque</th>
+                <th>Valor</th>
+                <th>Qtde</th>
+                
+                <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($this->Data as $v) { 
+
+                    if (!empty($v->imagem)) {
+                        $image = $v->cod_produto.'/'.$v->imagem;
+                    } else {
+                        $image = '1.jpg';
+                    }
+
+                    if ($v->quantidade == 0) {
+                        $class = 'class="danger"';
+                        $qtde = 'disabled';
+                        if($sessionCustomer->id)
+                            $btn = 'disabled="disabled"';            
+                    } else {
+                        $class = '';
+                        $qtde = '';
+                        if($sessionCustomer->id)
+                            $btn = ''; 
+                    }        
+                ?>
+                    <tr id="tr-<?php echo $v->cod_produto; ?>" <?php echo $class; ?>>
+                        <td><?php echo $v->nome; ?></td>
+                        <td>
+                            <a 
+                            class="btn btn-sm btn-primary popover-info" 
+                            role="button" 
+                            data-content='
+                                <img src="<?php echo $this->baseUrl() ?>/default/uploads/produtos/<?php echo $image; ?>" class="img-responsive" alt="" />
+                                <br /><br />
+                                <?php echo nl2br($v->descricao); ?>' 
+                            title="" 
+                            data-toggle="popover" 
+                            href="#" 
+                            data-original-title="<?php echo $v->nome; ?>">
+                                <i class="fa fa-plus-circle"></i> Info
+                            </a>
+                        </td>
+                        <td id="estoque-<?php echo $v->cod_produto; ?>"><?php echo $v->quantidade; ?></td>
+                        <td><?php echo $this->Valor($v->preco_varejo); ?></td>
+                        <td><input size="5" maxlength="4" type="text" id="qtde-<?php echo $v->cod_produto; ?>" value="0" <?php echo $qtde;?>></td>
+                        <td>
+                            <a id="<?php echo $v->cod_produto; ?>" class="btn btn-sm btn-success btn-comprar-grid" <?php echo $btn;?> >
+                                <i class="fa fa-shopping-cart"></i> Adicionar
+                            </a>
+                        </td>
+                       
+                    </tr>
+                 <?php } ?>
+            </tbody>
+        </table>
+    </div>    
+    
+</div>
+
+
+<br clear="all" />	
+ 

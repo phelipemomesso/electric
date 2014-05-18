@@ -1,0 +1,21 @@
+<?php
+
+return array(
+
+	// Menu
+		
+	'A Electric Ink' => 'A Electric Ink',
+    'Produtos' => 'Produtos',
+    "Promoções" => "Promoções",
+    'Representantes' => 'Representantes',
+    'Tatuadores' => 'Tatuadores',
+    'Sala de Imprensa' => 'Sala de Imprensa',
+	'Contato' => 'Contato',
+	'Português' => 'Português',
+    'Inglês' => 'Inglês',
+	'Espanhol' => 'Espanhol',
+	'Acessórios' => 'Acessórios',
+	'Tintas para tatuagem' => 'Tintas para tatuagem',
+    'Pigmentos para MD' => 'Pigmentos para MD',
+	'Máquinas' => 'Máquinas',
+);

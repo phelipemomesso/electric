@@ -1,0 +1,41 @@
+<script type="text/javascript">
+function slider_top() {
+    $(".slider-bg").backstretch([
+         baseUrl+"/default/uploads/banners/background/big-1.jpg", 
+         baseUrl+"/default/uploads/banners/background/big-2.jpg", 
+         baseUrl+"/default/uploads/banners/background/big-3.jpg", 
+         baseUrl+"/default/uploads/banners/background/big-4.jpg"
+    ], {
+        duration: 10000,
+        fade: 750
+    });
+}
+</script>
+
+<section class="container">
+
+    <p>Conheça o Electric Ink Team, nossos tatuadores patrocinados, como se iniciaram na arte da tatuagem, seus trabalhos, estilos de tatuagens, link para o Facebook e sites dos artistas.</p>
+
+	<?php foreach ($this->Data as $v) { ?>
+	
+	<div class="col-sm-6 col-md-2 tatuadores">
+    	
+        <div class="thumbnail">
+            
+            <a href="<?php echo $this->baseUrl() ?>/tatuador/view/<?php echo $this->RemoveAcentos($v->nome).'-'.base64_encode($v->cod_tatuador); ?>">
+            	
+                <img src="<?php echo $this->baseUrl() ?>/default/uploads/tatuadores/<?php echo $v->cod_tatuador; ?>/tatuador.jpg" alt="" />
+            	
+            </a>
+
+            <div class="caption">
+                <span><?php echo $v->nome; ?></span>
+            </div>
+
+        </div>
+
+   	</div>
+    
+    <?php } ?>
+
+</section>

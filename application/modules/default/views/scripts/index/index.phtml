@@ -1,0 +1,105 @@
+<script type="text/javascript">
+function large_slider_top() {
+    $(".large-slider-bg").backstretch([
+         baseUrl+"/default/uploads/banners/background/big-1.jpg", 
+         baseUrl+"/default/uploads/banners/background/big-2.jpg", 
+         baseUrl+"/default/uploads/banners/background/big-3.jpg", 
+         baseUrl+"/default/uploads/banners/background/big-4.jpg",
+    ], {
+        duration: 10000,
+        fade: 750
+    });
+}
+</script>
+
+
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+				<div class="content-panel-title">
+					<!-- Content panel title for padding and border -->
+					<h2><?php echo $this->translate("Produtos"); ?></h2>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+				<div class="content-panel">
+					<!-- Content panel in every span for padding -->
+					<p>A prioridade da ‘Família Electric Ink’ é garantir que o profissional da tatuagem tenha acesso a produtos da mais alta qualidade para poder desenvolver seu trabalho, sua arte, com segurança e da melhor maneira possível. Todos os produtos Electric Ink são desenvolvidos em laboratório próprio e fabricados de acordo com as mais rígidas normas dos órgãos de saúde responsáveis.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			
+			<?php foreach ($this->Categoria() as $categoria) { ?>
+			
+				<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+					<div class="content-panel">
+						<!-- Content panel in every span for padding -->
+						<div class="boxgrid slideright">
+							
+							<img class="cover" src="<?php echo $this->baseUrl() ?>/default/uploads/categoria/<?php echo $categoria->imagem; ?>" alt="<?php echo $categoria->nome; ?>" title="<?php echo $categoria->nome; ?>" />
+							
+							<h3><?php echo $categoria->nome; ?></h3>
+							
+							<p>
+								<?php echo $categoria->texto; ?>
+								<br /><br />
+								<a class="soft-hover" href="<?php echo $this->baseUrl() ?>/produto/category/<?php echo $this->RemoveAcentos($categoria->nome).'/'.base64_encode($categoria->cod_categoria); ?>">
+									Ver todos produtos
+								</a>
+							
+							</p>
+						</div>
+					</div>
+				</div>
+			
+			<?php } ?>
+
+		</div>
+		
+		<div class="row">
+			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+				<div class="content-panel-title">
+					<!-- Content panel title for padding and border -->
+					<h2><?php echo $this->translate("Tatuadores"); ?></h2>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+				<div class="content-panel">
+					<!-- Content panel in every span for padding -->
+					<p>Conheça o Electric Ink Team, nossos tatuadores patrocinados, como se iniciaram na arte da tatuagem, seus trabalhos, estilos de tatuagens, link para o Facebook e sites dos artistas.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="content-panel">
+					<!-- Content panel in every span for padding -->
+					<div class="flexslider">
+						<ul class="slides">
+							
+							<?php foreach ($this->Tatuadores as $v) { ?>
+								<li>
+									<a href="<?php echo $this->baseUrl() ?>/tatuador/view/<?php echo $this->RemoveAcentos($v->nome).'-'.base64_encode($v->cod_tatuador); ?>">
+										<img class="image_carousel" src="<?php echo $this->baseUrl() ?>/default/uploads/tatuadores/<?php echo $v->cod_tatuador; ?>/tatuador.jpg" alt="<?php echo $v->nome; ?>" title="<?php echo $v->nome; ?>" />
+										<br />
+										<?php echo $v->nome; ?>
+									</a>
+								</li>
+							<?php } ?>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	<style type="text/css">
+	.slides li {
+
+		padding: 0;
+		margin: 3px;
+		text-align: center;	
+	}
+
+	</style>	

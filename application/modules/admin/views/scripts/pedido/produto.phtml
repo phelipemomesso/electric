@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-xs-12"> 
+        <div class="table-header"><i class="fa fa-th-large"></i> Lote / Número Série Produto</div>     
+		<br />
+
+		<h4>Pedido Número: <?php echo $this->Pedido->pedido_numero; ?></h4>
+        
+        <form id="form" method="post" action="" enctype="multipart/form-data">
+
+			<table class="table table-striped table-bordered table-hover">
+	        	<thead>
+	            	<tr>
+	                	<th>Produto</th>
+	                    <th>Valor</th>
+	                    <th>Qtde</th>
+	                    <th>Lote / Série</th>
+	                </tr>
+	            </thead>   
+	           	<tbody>
+
+				<?php foreach($this->Produtos as $v){ ?>
+					<tr>
+                        <td><?php echo $v->produto; ?></td>
+                        <td><?php echo $this->Valor($v->valor); ?></td>
+                        <td><?php echo $v->quantidade; ?></td>
+                        <td>
+                        	<input type="text" id="<?php echo $v->cod; ?>lote_serie" maxlength="30" placeholder="Lote / Série" value="<?php echo $v->lote_serie; ?>">
+                        	<a class="btn btn-xs btn-success btn-tooltip produto-pedido" rel="<?php echo $v->cod; ?>" data-toggle="tooltip" data-original-title="Salvar">
+                                <i class="fa fa-check fa-lg"></i>  
+                            </a>
+                        </td>
+					</tr>
+				<?php } ?>
+
+				</tbody>
+			<table>	
+		</form>
+
+    </div>
+  </div>  

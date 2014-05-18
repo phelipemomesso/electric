@@ -1,0 +1,20 @@
+<section class="container">
+  
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 blog">
+    	<?php foreach($this->Data as $v){ ?>
+    	<div class="content-panel">
+        	
+        	<h3><?php echo $v->nome; ?></h3>
+            <p><?php echo $v->validade; ?></p>
+			<p><?php echo $v->descricao; ?></p>
+        </div>
+       <?php } ?>                 
+     </div>
+     
+     <?php echo $this->paginationControl($this->Data, 'Sliding', 'render/pagination.phtml') ?>
+    
+</section>	
+	
+	
+		
+ 

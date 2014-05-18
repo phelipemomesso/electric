@@ -1,0 +1,25 @@
+<?php
+
+return array(
+
+	// Menu
+		
+	'A Electric Ink' => 'The Electric Ink',
+    'Produtos' => 'Products',
+    "Promoções" => "Promotions",
+    'Representantes' => 'Representatives',
+    'Tatuadores' => 'Tattooists',
+    'Sala de Imprensa' => 'Press Room',
+	'Contato' => 'Contact',
+	'Português' => 'Portuguese',
+    'Inglês' => 'Enlglish',
+	'Espanhol' => 'Spanish',
+	'Acessórios' => 'Accessories',
+	'Tintas para tatuagem' => 'Tattoo Inks',
+	'Pigmentos para MD' => 'Pigments for MD',
+	'Máquinas' => 'Machines',
+	'Nome Completo' => 'Full Name',
+	'Cidade' => 'City',
+	'Estado' => 'State',
+	'Mensagem' => 'Message',
+);

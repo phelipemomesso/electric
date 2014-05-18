@@ -1,0 +1,27 @@
+<script type="text/javascript">
+function slider_top() {
+    $(".slider-bg").backstretch([
+         baseUrl+"/default/uploads/banners/background/representantes.jpg",
+    ], {
+        duration: 10000,
+        fade: 750
+    });
+}
+</script>
+<section class="container">
+
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 blog">
+    	<?php foreach($this->Data as $v){ ?>
+    	<div class="content-panel">
+        	
+        	<h3><?php echo $v->nome; ?></h3>
+            <p><?php echo $v->cidade.'/'.$v->estado ; ?></p>
+			<p><?php echo nl2br($v->texto); ?></p>
+        </div>
+       <?php } ?>                 
+     </div>
+     
+     <?php echo $this->paginationControl($this->Data, 'Sliding', 'render/pagination.phtml') ?>
+	
+
+</section>

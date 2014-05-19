@@ -181,7 +181,8 @@ if (sizeof ($this->carrinho) > 0) { ?>
 
   $res = objectToArray($correios->calculateShipping());
   
-  $sessionCustomer->frete = str_replace(',', '.',$res[40010]['Valor']);
+  $sessionCustomer->frete       = str_replace(',', '.',$res[40010]['Valor']);
+  $sessionCustomer->tipoFrete   = 'SEDEX';
 
 ?>
 

@@ -76,7 +76,7 @@
                             </a>
                             
 
-                            <?php if ($rs->status == 0 and $rs->retorno_data_hora == '0000-00-00 00:00:00') { ?>
+                            <?php if ( ($rs->status == 0 or $rs->status == 7) and $rs->retorno_data_hora == '0000-00-00 00:00:00') { ?>
                                 <a class="btn btn-warning btn-xs btn-info retorno btn-tooltip" data-toggle="tooltip" data-original-title="Retorno ao Estoque" rel="/admin/pedido/retorno/id/<?php echo $rs->cod_pedido ?>">
                                 <i class="fa fa-undo fa-lg"></i>  
                                 </a>

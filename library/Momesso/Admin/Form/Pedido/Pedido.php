@@ -17,6 +17,14 @@ class Momesso_Admin_Form_Pedido_Pedido extends EasyBib_Form {
                         ->setAttrib('size', 20);
         $this->addElement($pedido_numero);
 
+        $codigo_rastreamento = $this->createElement('text', 'codigo_rastreamento', array('label' => 'Código Rastreamento - Correios: '))
+                        ->setRequired(true)
+                        ->addFilter('StripTags')
+                        ->addFilter('stringTrim')
+                        ->setAttrib('maxlength', 20)
+                        ->setAttrib('size', 20);
+        $this->addElement($codigo_rastreamento);
+
         $valor = $this->createElement('text', 'valor', array('label' => 'Valor: '))
                         ->setRequired(true)
                         ->addFilter('StripTags')

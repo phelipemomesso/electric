@@ -31,7 +31,8 @@ class Momesso_Admin_Form_Pedido_Pedido extends EasyBib_Form {
             2 => "Autorização de pagamento",
             3 => "Preparação para o envio",
             4 => "Transporte do(s) Produto(s)",
-            5 => "Entrega do(s) Produto(s)"
+            5 => "Entrega do(s) Produto(s)",
+            7 => "Cancelado"
         );
 
         $status = $this->createElement('select', 'status', array('label' => 'Status:'));

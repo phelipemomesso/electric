@@ -9,9 +9,13 @@ class Model_Pedido {
     }
 
 
-    public function getPedidos(){
+    public function getPedidos($where=false){
 
-        return $this->_dbTable->fetchAll(null,'created_at desc');
+        if ($where) {
+            $sql = $where;
+        }
+
+        return $this->_dbTable->fetchAll($sql,'created_at desc');
     }
 
     public function getPedidosByUserId($id){

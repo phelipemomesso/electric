@@ -160,7 +160,7 @@
         <script type="text/javascript">
             jQuery(function($) {
                 
-                var oTable = jQuery('#registros').dataTable();
+                var oTable = jQuery('.js-registros').dataTable();
 
                 $( ".btn-tooltip" ).tooltip();
 
@@ -275,6 +275,24 @@
                 <?php } else if ($this->Type == 'j') { ?>
                     $("#documento").mask("99.999.999/9999-99");
                <?php } ?> 
+
+               $('.js-tab').on('click',function(e) {
+
+                    location.href=baseUrl+'/admin/'+$(this).attr('href');
+
+               }) 
+
+               $('.js-busca').on('click',function(e) {
+
+                    e.preventDefault();
+                    
+                    if ($('#search').val() == '') {
+                        alert('Digite um valor para busca');
+                    } else {
+                        location.href=baseUrl+'/admin/'+$(this).attr('rel')+$('#search').val();
+                    }
+
+               }) 
             })
         </script>
 	

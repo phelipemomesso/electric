@@ -1,0 +1,71 @@
+
+<div class="table-header"><i class="fa fa-th-large"></i> Cancelamento de Pedidos - Não Pago / Em Aberto</div>
+
+<br />
+
+<div class="tabbable">
+	
+	<ul id="myTab" class="nav nav-tabs">
+
+		<li class="active">
+			<a href="#abertos" data-toggle="tab">
+				Pedidos em Aberto ( Não Finalizados )
+				<span class="badge badge-danger"><?php echo count($this->Aberto);?></span>
+			</a>
+		</li>
+
+		<li>
+			<a href="#npagos" data-toggle="tab">
+				Pedidos Finalizados Não Pagos
+				<span class="badge badge-danger"><?php echo count($this->NPagos);?></span>
+			</a>
+		</li>
+
+	</ul>	
+
+</div>
+
+<div class="tab-content">
+	
+	<div id="abertos" class="tab-pane active">
+		<p>
+			<ul class="list-unstyled spaced">
+
+				<?php 
+				$Model_Cliente = new Model_Cliente();
+				foreach($this->Aberto as $v){ 
+					$cliente = $Model_Cliente->getClientById($v->cliente);
+				?>
+				
+					<li>
+						<i class="ace-icon fa fa-check bigger-110 green"></i>
+						<?php echo $this->DataHora($v->created_at); ?> / <?php echo $cliente->fantasia; ?> / <?php echo $v->pedido_numero; ?>
+					</li>
+
+				<?php } ?>
+
+			</ul>
+	</p>
+	</div>
+
+	<div id="npagos" class="tab-pane">
+		<p>
+			<ul class="list-unstyled spaced">
+
+				<?php 
+				foreach($this->NPagos as $v){ 
+					$cliente = $Model_Cliente->getClientById($v->cliente);
+				?>
+				
+					<li>
+						<i class="ace-icon fa fa-check bigger-110 green"></i>
+						<?php echo $this->DataHora($v->created_at); ?> / <?php echo $cliente->fantasia; ?> / <?php echo $v->pedido_numero; ?> / <?php echo $this->Valor($v->frete + $v->valor); ?>
+					</li>
+
+				<?php } ?>
+
+			</ul>
+		</p>
+	</div>
+
+</div>

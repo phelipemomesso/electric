@@ -27,21 +27,18 @@
         <li class="<?php if($this->Grupo == 1 or $this->Grupo == 0) echo 'active'; ?>">
             <a href="cliente/index/grupo/1" class="js-tab" data-target="#varejo" data-toggle="tab">
                 Varejo
-                <span class="badge badge-danger"><?php echo count($this->Varejo);?></span>
             </a>
         </li>
 
         <li class="<?php if($this->Grupo == 2) echo 'active'; ?>">
             <a href="cliente/index/grupo/2" class="js-tab" data-target="#atacado" data-toggle="tab">
                 Atacado
-                <span class="badge badge-danger"><?php echo count($this->Atacado);?></span>
             </a>
         </li>
 
         <li class="<?php if($this->Grupo == 3) echo 'active'; ?>">
             <a href="cliente/index/grupo/3" class="js-tab" data-target="#distribuidor" data-toggle="tab">
                 Distribuidor
-                <span class="badge badge-danger"><?php echo count($this->Distribuidor);?></span>
             </a>
         </li>
 

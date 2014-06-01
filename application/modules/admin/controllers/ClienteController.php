@@ -44,8 +44,6 @@ class Admin_ClienteController extends Zend_Controller_Action {
 
         $this->view->Data = $paginas;
         $this->view->Grupo = $grupo;
-
-        $this->qtdeClientes();
     }
 
     public function buscaAction(){
@@ -197,13 +195,6 @@ class Admin_ClienteController extends Zend_Controller_Action {
             
             $this->Model->save($dados);
         }    
-    }
-
-    private function qtdeClientes(){
-
-        $this->view->Varejo         = $this->Model->getClients('grupo = 1');
-        $this->view->Atacado        = $this->Model->getClients('grupo = 2');
-        $this->view->Distribuidor   = $this->Model->getClients('grupo = 3');
     }
 
     

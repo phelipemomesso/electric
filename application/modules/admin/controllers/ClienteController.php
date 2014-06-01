@@ -17,12 +17,44 @@ class Admin_ClienteController extends Zend_Controller_Action {
 
     public function indexAction() {
 
-        $paginas = Zend_Paginator::factory($this->Model->getClients());
+        $grupo = $this->ValidateInputUrl->validateInput($this->_getParam('grupo'));
+
+        switch ($grupo) {
+            case 1:
+                $res = $this->Model->getClients('grupo = 1');
+                break;
+
+            case 2:
+                $res = $this->Model->getClients('grupo = 2');
+                break; 
+
+            case 3:
+                $res = $this->Model->getClients('grupo = 3');
+                break;                     
+            
+            default:
+                $res = $this->Model->getClients('grupo = 1');
+                break;
+        }
+
+        $paginas = Zend_Paginator::factory($res);
         $paginas->setCurrentPageNumber($this->_getParam('pagina'), 1);
-        $paginas->setItemCountPerPage(25);
+        $paginas->setItemCountPerPage(20);
         $paginas->setPageRange(10);
-             
+
         $this->view->Data = $paginas;
+        $this->view->Grupo = $grupo;
+
+        $this->qtdeClientes();
+    }
+
+    public function buscaAction(){
+
+        $q = $this->ValidateInputUrl->validateInput($this->_getParam('q'));
+
+        $this->view->Query = $q;
+        $this->view->Data = $this->Model->getClients('fantasia like "%'.$q.'%"');
+        $this->qtdeClientes();
     }
     
     public function newAction(){
@@ -165,6 +197,13 @@ class Admin_ClienteController extends Zend_Controller_Action {
             
             $this->Model->save($dados);
         }    
+    }
+
+    private function qtdeClientes(){
+
+        $this->view->Varejo         = $this->Model->getClients('grupo = 1');
+        $this->view->Atacado        = $this->Model->getClients('grupo = 2');
+        $this->view->Distribuidor   = $this->Model->getClients('grupo = 3');
     }
 
     

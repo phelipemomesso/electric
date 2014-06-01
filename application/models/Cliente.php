@@ -8,9 +8,13 @@ class Model_Cliente {
         $this->_dbTable = new Model_DbTable_Cliente();
     }
 
-    public function getClients(){
+    public function getClients($where=false){
 
-    	return $this->_dbTable->fetchAll();
+        if ($where) {
+            $sql = $where;
+        }
+
+    	return $this->_dbTable->fetchAll($sql,'fantasia asc');
     }
     
     public function getClientById($id){

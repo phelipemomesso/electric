@@ -52,7 +52,6 @@ class Admin_ClienteController extends Zend_Controller_Action {
 
         $this->view->Query = $q;
         $this->view->Data = $this->Model->getClients('fantasia like "%'.$q.'%"');
-        $this->qtdeClientes();
     }
     
     public function newAction(){

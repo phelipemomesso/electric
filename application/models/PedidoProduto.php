@@ -16,7 +16,7 @@ class Model_PedidoProduto {
 
     public function verificaPedidoProduto($pedido,$produto){
 
-        return $this->_dbTable->fetchRow('pedido ='.$pedido.' and produto = "'.$produto.'"');
+        return $this->_dbTable->fetchRow('pedido ='.$pedido.' and produto = "'.addslashes($produto).'"');
     }
     
     public function save($dados,$id=false) {

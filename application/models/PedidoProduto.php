@@ -11,7 +11,7 @@ class Model_PedidoProduto {
 
     public function getProdutosByPedidoId($id){
 
-        return $this->_dbTable->fetchAll('pedido ='.$id,'quantidade asc');
+        return $this->_dbTable->fetchAll('pedido ='.$id,'produto asc');
     }
 
     public function verificaPedidoProduto($pedido,$produto){

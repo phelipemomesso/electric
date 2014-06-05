@@ -4,9 +4,8 @@
        <table class="table table-striped table-bordered table-hover">
         <thead>
             <tr>
-                <th>Ordem</th>
+                <th>Pedido</th>
                 <th>Data/Hora</th>
-                <th>Número</th>
                 <th>Cliente</th>
                 <th>Valor</th>
                 <th>Envio</th>
@@ -21,8 +20,7 @@
                 ?>
                 <tr>
                     <td><?php echo $rs->cod_pedido; ?></td>
-                    <td><?php echo $this->DataHora($v->created_at); ?></td>
-                    <td><?php echo $rs->pedido_numero; ?></td>
+                    <td><?php echo $this->DataHora($rs->created_at); ?></td>
                     <td><?php echo $cliente->fantasia; ?></td>
                     <td><?php echo $this->Valor($rs->valor+$rs->frete); ?></td>
                     <td><?php echo $rs->frete_tipo; ?></td>
